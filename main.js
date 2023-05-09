@@ -9,11 +9,13 @@ const GameBoard = (() => {
       once: true,
     })
   );
+  const form = document.getElementById("form");
+  form.addEventListener("submit", (e) => Game.start(e));
   const resetBoard = () => window.location.reload();
   const getBoxes = () => boxes;
   return {
-    getBoxes,
     resetBoard,
+    getBoxes,
   };
 })();
 
@@ -21,6 +23,7 @@ const Game = (() => {
   //initialize player data
   let playerX;
   let playerO;
+  let playerXturn = true;
 
   const start = (e) => {
     e.preventDefault();
@@ -29,20 +32,20 @@ const Game = (() => {
     e.target.classList.add("hide");
   };
 
-  const handleClick = (box) => {
-    console.log(box.target);
-    box.target.textContent = "X";
+  const checkWinner = () => {
+    console.log(GameBoard.getBoxes());
   };
 
-  const form = document.getElementById("form");
-  form.addEventListener("submit", (e) => start(e));
-
-  const getPlayerX = () => playerX;
-  const getPlayerO = () => playerO;
+  const handleClick = (box) => {
+    console.log(box.target);
+    playerXturn ? box.target.classList.add("x") : box.target.classList.add("o");
+    //check win/lose/draw
+    playerXturn = !playerXturn;
+  };
 
   return {
-    getPlayerX,
-    getPlayerO,
     handleClick,
+    start,
+    checkWinner,
   };
 })();

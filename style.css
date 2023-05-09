@@ -67,40 +67,64 @@ form > div {
 }
 
 .box.x::before,
-.box.x::after {
+.box.x::after,
+.box.o::before,
+.box.o::after {
+  background-color: black;
+}
+
+.board.x .box:not(.x):not(.o):hover::before,
+.board.x .box:not(.x):not(.o):hover::after,
+.board.o .box:not(.x):not(.o):hover::before,
+.board.o .box:not(.x):not(.o):hover::after {
+  background-color: lightgray;
+}
+
+.box.x::before,
+.box.x::after,
+.board.x .box:not(.x):not(.o):hover::before,
+.board.x .box:not(.x):not(.o):hover::after {
   position: absolute;
   content: "";
   width: calc(var(--mark-size) * 0.1);
   height: var(--mark-size);
-  background-color: black;
 }
 
-.box.x::before {
+.box.x::before,
+.board.x .box:not(.x):not(.o):hover::before {
   transform: rotate(45deg);
 }
 
-.box.x::after {
+.box.x::after,
+.board.x .box:not(.x):not(.o):hover::after {
   transform: rotate(-45deg);
 }
 
 .box.o::before,
-.box.o::after {
+.box.o::after,
+.board.o .box:not(.x):not(.o):hover::before,
+.board.o .box:not(.x):not(.o):hover::after {
   position: absolute;
   content: "";
   border-radius: 50%;
   width: var(--mark-size);
   height: var(--mark-size);
-  background-color: black;
 }
 
-.box.o::before {
+.box.o::before,
+.board.o .box:not(.x):not(.o):hover::before {
   width: var(--mark-size);
   height: var(--mark-size);
-  background-color: black;
 }
 
-.box.o::after {
+.box.o::after,
+.board.o .box:not(.x):not(.o):hover::after {
   width: calc(var(--mark-size) * 0.8);
   height: calc(var(--mark-size) * 0.8);
   background-color: white;
+}
+
+.box.x,
+.box.o {
+  cursor: not-allowed;
 }
