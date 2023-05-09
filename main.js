@@ -1,6 +1,3 @@
-let playerX;
-let playerO;
-
 function CreatePlayer(name, mark) {
   return { name, mark };
 }
@@ -16,6 +13,8 @@ const GameBoard = (() => {
 
 const Game = (() => {
   //initialize player data
+  let playerX;
+  let playerO;
   const start = (e) => {
     e.preventDefault();
     playerX = CreatePlayer(document.getElementById("player-x").value, "X");
@@ -24,4 +23,12 @@ const Game = (() => {
   };
   const form = document.getElementById("form");
   form.addEventListener("submit", (e) => start(e));
+
+  const getPlayerX = () => playerX;
+  const getPlayerO = () => playerO;
+
+  return {
+    getPlayerX,
+    getPlayerO,
+  };
 })();
