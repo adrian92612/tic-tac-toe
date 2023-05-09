@@ -23,13 +23,17 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
+  background-color: rgba(200, 200, 200, 0.2);
+  backdrop-filter: blur(8px);
 }
 
 form > div {
   display: flex;
   flex-direction: column;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 .board {
