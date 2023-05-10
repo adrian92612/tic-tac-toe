@@ -13,6 +13,11 @@ const GameBoard = (() => {
   const form = document.getElementById("form");
   form.addEventListener("submit", (e) => Game.start(e));
 
+  const updateInfo = (x, o) => {
+    document.querySelector("#x-name").textContent = `X - ${x}`;
+    document.querySelector("#o-name").textContent = `O - ${o}`;
+  };
+
   const displayWinner = (winner, draw) => {
     const resultBoard = document.querySelector("#result-board");
     const resetBtn = document.querySelector("#reset");
@@ -26,6 +31,7 @@ const GameBoard = (() => {
   return {
     getBoxes,
     displayWinner,
+    updateInfo,
   };
 })();
 
@@ -49,6 +55,7 @@ const Game = (() => {
     e.preventDefault();
     playerX = CreatePlayer(document.getElementById("player-x").value);
     playerO = CreatePlayer(document.getElementById("player-o").value);
+    GameBoard.updateInfo(playerX, playerO);
     e.target.classList.add("hide");
   };
 
